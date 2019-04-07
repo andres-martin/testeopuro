@@ -67,4 +67,7 @@ int permi(char **buff_tk, char *argv, int input_count, int *stat);
 int check_input(char *buff);
 char *_strdup(char *str);
 char **create_arg_list(char **buff_tk, char *buff, const char *delim);
+int token_len(char *str, char *delim);
+int count_tokens(char *str, char *delim);
+char **_strtok(char *line, char *delim);
 #endif
