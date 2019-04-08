@@ -21,7 +21,9 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		check_path = -1;
 		signal(SIGINT, signalhandler);
 		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "$ ", 3);
+			write(STDOUT_FILENO, "\033[1;31m", 8);
+			write(STDOUT_FILENO, "Shell's Bells ", 13);
+			write(STDOUT_FILENO, "\033[0m", 6);
 		input_count++;
 		read = _getline(&buff, &br, stdin);
 		if (read == -1)

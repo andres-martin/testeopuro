@@ -75,4 +75,8 @@ char *_strcpy(char *dest, const char *src);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void aux_getline(char **p, size_t *n, char *buffer, size_t b);
 ssize_t _getline(char **p, size_t *n, FILE *s);
+/* colors collection */
+void red();
+void yellow();
+void reset();
 #endif
