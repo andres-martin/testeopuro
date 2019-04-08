@@ -21,9 +21,9 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		check_path = -1;
 		signal(SIGINT, signalhandler);
 		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "\033[1;31m", 8);
+			red ();
 			write(STDOUT_FILENO, pl_holder, _strlen(pl_holder));
-			write(STDOUT_FILENO, "\033[0m", 5);
+			reset ();
 		input_count++;
 		read = _getline(&buff, &br, stdin);
 		if (read == -1)
