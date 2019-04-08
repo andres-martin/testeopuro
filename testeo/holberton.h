@@ -10,7 +10,7 @@
 #include <sys/wait.h>
 #include <limits.h>
 /**
- * struct list_s - linked list
+ * struct listint_s - linked list
  * @a: key value of environment variable
  * @b: value of environment variable
  * @next: Next node
@@ -36,7 +36,16 @@ typedef struct builtin
 void exec_command(char *argv, char **buff_tk, char *buff_tk1,
 		char *buff, int check_path, int *stat);
 void signalhandler(int sig);
-int (*get_builtin(char **))(char **, listint_t **, char *, char *, size_t, int *);
+/**
+ * get_builtin - function to find builtin function
+ * @argv: program name
+ * @input_count: number of commands processed
+ * @buff: buffer value
+ * @stat: exit status
+ * Return: integer
+ */
+int (*get_builtin(char **s))(char **buff_tk, listint_t **env,
+	char *buff, char *argv, size_t input_count, int *stat);
 listint_t *add_node_end(listint_t **head, char *a, char *b);
 int delete_node_at_index(listint_t **head, unsigned int index);
 void get_env(listint_t **head, char **env);
@@ -76,7 +85,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void aux_getline(char **p, size_t *n, char *buffer, size_t b);
 ssize_t _getline(char **p, size_t *n, FILE *s);
 /* colors collection */
-void red();
-void yellow();
-void reset();
+void red(void);
+void yellow(void);
+void reset(void);
 #endif
