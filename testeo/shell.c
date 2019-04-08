@@ -14,7 +14,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	size_t input_count = 0, br = 0;
 	int check_path = -1, stat = 0;
 	char *path = NULL, *buff = NULL, *buff_tk1 = NULL, **buff_tk = NULL;
-
+	char *pl_holder = "†Shell's Bells† ";
 	get_env(&env_cp, env);
 	while (1)
 	{
@@ -22,8 +22,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		signal(SIGINT, signalhandler);
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\033[1;31m", 8);
-			write(STDOUT_FILENO, "Shell's Bells ", 13);
-			write(STDOUT_FILENO, "\033[0m", 6);
+			write(STDOUT_FILENO, pl_holder, _strlen(pl_holder));
+			write(STDOUT_FILENO, "\033[0m", 5);
 		input_count++;
 		read = _getline(&buff, &br, stdin);
 		if (read == -1)
