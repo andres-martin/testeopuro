@@ -12,10 +12,10 @@ char **create_arg_list(char **buff_tk, char *buff, const char *delim)
         char *toprint, *buffdup;
 
         buffdup = _strdup(buff);
-        toprint = strtok(buffdup, delim);
+        toprint = _strtok(buffdup, delim);
         while (toprint)
         {
-                toprint = strtok(NULL, delim);
+                toprint = _strtok(NULL, delim);
                 count++;
         }
         free(buffdup);
@@ -24,12 +24,12 @@ char **create_arg_list(char **buff_tk, char *buff, const char *delim)
         buff_tk = (char **) malloc((count + 1) * sizeof(char *));
         if (!buff_tk)
                 _exit(1);
-        toprint = strtok(buff, delim);
+        toprint = _strtok(buff, delim);
         count = 0;
         while (toprint)
         {
                 buff_tk[count] = toprint;
-                toprint = strtok(NULL, delim);
+                toprint = _strtok(NULL, delim);
                 count++;
         }
         buff_tk[count]  = NULL;
