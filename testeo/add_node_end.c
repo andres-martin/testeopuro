@@ -2,8 +2,8 @@
 /**
  * add_node_end - adds a new node to end of list of integers
  * @head: pointer to pointer of head of node
- * @key: key value
- * @val: value
+ * @a: key value
+ * @b: value
  * Return: list of integers with new node added
  */
 listint_t *add_node_end(listint_t **head, char *a, char *b)
@@ -25,5 +25,5 @@ listint_t *add_node_end(listint_t **head, char *a, char *b)
 	while (tmp_node->next)
 		tmp_node = tmp_node->next;
 	tmp_node->next = new_node;
-	return (*head);
+return (*head);
 }

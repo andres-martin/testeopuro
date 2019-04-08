@@ -1,5 +1,6 @@
 #include "holberton.h"
-/* _strcpy - copies the string pointed by src to ptr dest
+/**
+ * _strcpy - copies the string pointed by src to ptr dest
  * @src: pointer to source string
  * @dest: pointer to be included src into
  * Return: dest pointer.

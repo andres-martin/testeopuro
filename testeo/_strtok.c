@@ -1,8 +1,13 @@
 #include "holberton.h"
-
+/**
+ * check_match - checks if c is equal to a given char of a string
+ * @c: character to be compared
+ * @str: input string
+ * Return: Always 0
+ */
 unsigned int check_match(char c, const char *str)
 {
-unsigned int i;
+	unsigned int i;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
@@ -11,6 +16,12 @@ unsigned int i;
 	}
 return (0);
 }
+/**
+ * _strtok - breaks a string into a seq. of zero or nonempty tokens
+ * @str: string to be parsed
+ * @delim: delimit the token in the parsed string
+ * Return: returns a pointer to a null-terminated string
+ */
 char *_strtok(char *str, const char *delim)
 {
 	static char *token_start;

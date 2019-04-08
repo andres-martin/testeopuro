@@ -1,5 +1,6 @@
 #include "holberton.h"
-/* aux_getline - aux function of getline
+/**
+ * aux_getline - aux function of getline
  * @p: double pointer
  * @n: size of characters
  * @buffer: buffer to be allocated
@@ -10,9 +11,9 @@ void aux_getline(char **p, size_t *n, char *buffer, size_t b)
 	if (*p == NULL)
 	{
 		if (b > 120)
-		*n = b;
+			*n = b;
 		else
-		*n = 120;
+			*n = 120;
 		*p = buffer;
 	}
 	else if (*n < b)
@@ -29,10 +30,12 @@ void aux_getline(char **p, size_t *n, char *buffer, size_t b)
 		free(buffer);
 	}
 }
-/* _getline - aux function of getline
+/**
+ * _getline - aux function of getline
  * @p: double pointer
  * @n: size of characters
- * @s: pointer to file to be read 
+ * @s: pointer to file to be read
+ * Return: j.
 */
 ssize_t _getline(char **p, size_t *n, FILE *s)
 {

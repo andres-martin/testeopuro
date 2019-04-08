@@ -1,9 +1,8 @@
 #include "holberton.h"
-
 /**
  * change_pwd - changes current working directory
  * @env_cp:  copy of the environment
- * @key: environment variable to look for
+ * @a: environment variable to look for
  * @add: value of environment to add
  * Return: 1 if successful -1 if not
  */
