@@ -9,14 +9,14 @@
  */
 int permi(char **buff_tk, char *argv, int input_count, int *stat)
 {
-        if (access(buff_tk[0], F_OK) == 0)
-        {
-                *stat = 126;
-                error_message(argv, input_count, ": Permission denied\n",
-                              buff_tk);
-                free(buff_tk);
-                return (0);
-        }
-        else
-                return (-1);
+	if (access(buff_tk[0], F_OK) == 0)
+	{
+		*stat = 126;
+		error_message(argv, input_count, ": Permission denied\n",
+			buff_tk);
+		free(buff_tk);
+		return (0);
+	}
+	else
+		return (-1);
 }

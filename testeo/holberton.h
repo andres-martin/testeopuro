@@ -86,6 +86,8 @@ ssize_t _getline(char **p, size_t *n, FILE *s);
 /* colors collection */
 void red(void);
 void yellow(void);
+void bold_red(void);
+void green(void);
 void reset(void);
 /* beta testing */
 int bart(void);

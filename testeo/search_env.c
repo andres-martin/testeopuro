@@ -8,13 +8,13 @@
  */
 char *_getenv(char *name, listint_t **env)
 {
-        listint_t *temp = *env;
+	listint_t *temp = *env;
 
-        while (temp)
-        {
-                if (_strcmp(temp->a, name) == 0)
-                        return (temp->b);
-                temp = temp->next;
-        }
-        return (NULL);
+	while (temp)
+	{
+	if (_strcmp(temp->a, name) == 0)
+		return (temp->b);
+		temp = temp->next;
+	}
+return (NULL);
 }

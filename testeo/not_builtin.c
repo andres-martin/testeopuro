@@ -10,14 +10,14 @@
  * Return: always 2
  */
 int builtin_notfound(char **buff_tk, listint_t **env, char *buff,
-                char *argv, size_t input_count, int *stat)
+	char *argv, size_t input_count, int *stat)
 {
-        (void) buff_tk;
-        (void) env;
-        (void) buff;
-        (void) argv;
-        (void) input_count;
-        (void) stat;
+	(void) buff_tk;
+	(void) env;
+	(void) buff;
+	(void) argv;
+	(void) input_count;
+	(void) stat;
 
-        return (0);
+	return (0);
 }

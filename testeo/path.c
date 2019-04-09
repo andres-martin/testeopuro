@@ -11,7 +11,7 @@
  * otherwise, return NULL if not found.
  */
 char *path_helper(char *path, char **buff_tk, char *argv,
-		size_t input_count, int *stat)
+	size_t input_count, int *stat)
 {
 	char *path_cp = NULL, *concat_path = NULL;
 	char **path_tk = NULL;
@@ -36,7 +36,6 @@ char *path_helper(char *path, char **buff_tk, char *argv,
 	}
 	while (path_tk && path_tk[i] != NULL)
 	{
-
 		concat_path = _strcat(path_tk[i], "/", buff_tk[0]);
 		if (access(concat_path, X_OK) == 0)
 		{
