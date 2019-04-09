@@ -85,9 +85,9 @@ void aux_getline(char **p, size_t *n, char *buffer, size_t b);
 ssize_t _getline(char **p, size_t *n, FILE *s);
 /* colors collection */
 void red(void);
-void yellow(void);
-void bold_red(void);
 void green(void);
+void yellow(void);
+void blue(void);
 void reset(void);
 /* beta testing */
 int bart(void);

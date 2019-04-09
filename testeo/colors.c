@@ -1,8 +1,8 @@
 #include "holberton.h"
-#define RED "\033[0;31m"
+#define RED "\033[1;31m"
+#define GREEN "\033[1;32m"
 #define YELLOW "\033[1;33m"
-#define BOLD_RED "\033[1;31m"
-#define GREEN "\033[0;32m"
+#define BLUE "\033[1;34m"
 #define RESET "\033[0m"
 /**
  * red - adds red color to stdin
@@ -12,6 +12,13 @@ void red(void)
 	write(STDOUT_FILENO, RED, _strlen(RED));
 }
 /**
+ * green - adds green color to stdin
+ */
+void green(void)
+{
+	write(STDOUT_FILENO, GREEN, _strlen(GREEN));
+}
+/**
  * yellow - adds yellow color to stdin
  */
 void yellow(void)
@@ -19,18 +26,11 @@ void yellow(void)
 	write(STDOUT_FILENO, YELLOW, _strlen(YELLOW));
 }
 /**
- * bold_red - adds bold red color to stdin
+ * blue - adds blue color to stdin
  */
-void bold_red(void)
+void blue(void)
 {
-	write(STDOUT_FILENO, BOLD_RED, _strlen(BOLD_RED));
-}
-/**
- * green - adds green color to stdin
- */
-void green(void)
-{
-	write(STDOUT_FILENO, GREEN, _strlen(GREEN));
+	write(STDOUT_FILENO, BLUE, _strlen(BLUE));
 }
 /**
  * reset - resets color to normal

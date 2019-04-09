@@ -66,6 +66,7 @@ void help_exit(void)
 {
 	char *msg = "exit: exit [STATUS]\n\tExits the shell.\n\n\tThe ";
 
+	blue();
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "STATUS argument is the integer used to exit the shell.";
 	write(STDOUT_FILENO, msg, _strlen(msg));

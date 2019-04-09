@@ -22,7 +22,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		check_path = -1;
 		signal(SIGINT, signalhandler);
 		if (isatty(STDIN_FILENO))
-			bold_red();
+			red();
 			write(STDOUT_FILENO, pl_holder, _strlen(pl_holder));
 			reset();
 		input_count++;
