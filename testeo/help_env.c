@@ -1,12 +1,18 @@
 #include "holberton.h"
-
+/**
+ * help_env - aux function of _help
+ * prints env help
+*/
 void help_env(void)
 {
 	char *msg = "env: env\n\tPrints the current environment.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
-
+/**
+ * help_setenv - aux function of _help
+ * prints setenv help
+*/
 void help_setenv(void)
 {
 	char *msg = "setenv: setenv [VARIABLE] [VALUE]\n\tInitializes a new";
@@ -17,6 +23,10 @@ void help_setenv(void)
 	msg = "\tUpon failure, prints a message to stderr.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
+/**
+ * help_unsetenv - aux function of _help
+ * prints unsetenv help
+*/
 void help_unsetenv(void)
 {
 	char *msg = "unsetenv: unsetenv [VARIABLE]\n\tRemoves an ";
@@ -27,7 +37,10 @@ void help_unsetenv(void)
 	msg = "message to stderr.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
-
+/**
+ * help_cd - aux function of _help
+ * prints cd help
+*/
 void help_cd(void)
 {
 	char *msg = "cd: cd [DIRECTORY]\n\tChanges the current directory of the";
@@ -45,6 +58,10 @@ void help_cd(void)
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
 
+/**
+ * help_exit - aux function of _help
+ * prints exit help
+*/
 void help_exit(void)
 {
 	char *msg = "exit: exit [STATUS]\n\tExits the shell.\n\n\tThe ";

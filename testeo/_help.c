@@ -5,12 +5,12 @@
 */
 void help_help(void)
 {
-	char *msg = "help: help\n\tSee all Shell's bells builtin commands.\n";
+	char *msg = "help: help\n\tSee all Shell's Bells builtin commands.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "\n help [BUILTIN NAME]\n\tSee specific information on each ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
-	msg = "builtin command.\n";
+	msg = "built-in command.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
 /**
@@ -19,7 +19,7 @@ void help_help(void)
 */
 void help_all(void)
 {
-	char *msg = "Shellsbells\nThese shell commands are defined internally.\n";
+	char *msg = "Shell's Bells\nThese shell commands are defined internally.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "Type 'help' to see this list.\nType 'help name' to find ";
@@ -44,19 +44,19 @@ int _help(char **args)
 {
 	char *a;
 
-	if (!args[0])
+	if (!args[1])
 		help_all();
-	else if (_strcmp(args[0], "cd") == 0)
+	else if (_strcmp(args[1], "cd") == 0)
 		help_cd();
-	else if (_strcmp(args[0], "exit") == 0)
+	else if (_strcmp(args[1], "exit") == 0)
 		help_exit();
-	else if (_strcmp(args[0], "env") == 0)
+	else if (_strcmp(args[1], "env") == 0)
 		help_env();
-	else if (_strcmp(args[0], "setenv") == 0)
+	else if (_strcmp(args[1], "setenv") == 0)
 		help_setenv();
-	else if (_strcmp(args[0], "unsetenv") == 0)
+	else if (_strcmp(args[1], "unsetenv") == 0)
 		help_unsetenv();
-	else if (_strcmp(args[0], "help") == 0)
+	else if (_strcmp(args[1], "help") == 0)
 		help_help();
 	else
 		write(STDERR_FILENO, a, _strlen(a));
