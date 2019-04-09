@@ -6,7 +6,8 @@
 void help_help(void)
 {
 	char *msg = "help: help\n\tSee all Shell's Bells builtin commands.\n";
-
+	
+	yellow();
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "\n help [BUILTIN NAME]\n\tSee specific information on each ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
@@ -42,7 +43,7 @@ void help_all(void)
 */
 int _help(char **args)
 {
-	char *a;
+	char *a = "no help command found for this option\n";
 
 	if (!args[1])
 		help_all();
