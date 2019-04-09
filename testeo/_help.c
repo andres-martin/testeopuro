@@ -1,7 +1,11 @@
 #include "holberton.h"
+/**
+ * help_help - aux function of _help
+ * prints msg tp stdout
+*/
 void help_help(void)
 {
-	char *msg = "help: help\n\tSee all  Shell's bells builtin commands.\n";
+	char *msg = "help: help\n\tSee all Shell's bells builtin commands.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "\n help [BUILTIN NAME]\n\tSee specific information on each ";
@@ -9,7 +13,10 @@ void help_help(void)
 	msg = "builtin command.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
-
+/**
+ * help_all - aux function of _help
+ * prints a collection of msgs to stdout
+*/
 void help_all(void)
 {
 	char *msg = "Shellsbells\nThese shell commands are defined internally.\n";
@@ -28,7 +35,11 @@ void help_all(void)
 	msg = "unsetenv [VARIABLE]\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 }
-
+/**
+ * _help - function _help, prompts a quick help for built-in commands
+ * @args: arguments to be prompted help feature
+ * Return: Always 0
+*/
 int _help(char **args)
 {
 	char *a;
