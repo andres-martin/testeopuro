@@ -19,6 +19,7 @@ int (*get_builtin(char **s))(char **buff_tk, listint_t
                 {"unsetenv", builtin_unsetenv},
                 {"cd", builtin_cd},
                 {"bart", bart},
+                {"help", _help},
                 {NULL, builtin_notfound}
         };
         int i = 0;
