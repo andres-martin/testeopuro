@@ -1,5 +1,32 @@
 #include "holberton.h"
 /**
+ * helper_builtin_exit - checks if argument is exit.
+ * @buff_tk: pointer to string to check
+ * @argv: program name
+ * @str: pointer to string
+ * @input_count: number of commands processed
+ * @stat: exit status
+ * @err_num: error number
+ * Return: Always 0.
+ *
+ */
+int helper_builtin_exit(char **buff_tk,
+	char *argv, char *str, size_t input_count, int *stat, int err_num)
+{
+	*stat = 2;
+	str = _strcat(": Illegal number:", buff_tk[1], "\n");
+	err_num = error_message(argv, input_count, str, buff_tk);
+	free(str);
+	if (err_num == 1)
+	{
+		free(buff_tk);
+		buff_tk = NULL;
+		return (1);
+	}
+return (0);
+}
+
+/**
  * builtin_exit - checks if argument is exit.
  * @buff_tk: pointer to string to check
  * @env: pointer to environment values
@@ -39,18 +66,7 @@ int  builtin_exit(char **buff_tk, listint_t **env, char *buff,
 			{
 				temp = (temp * 10) + (buff_tk[1][i] - '0');
 				if (temp > INT_MAX)
-				{
-					*stat = 2;
-					str = _strcat(": Illegal number:", buff_tk[1], "\n");
-					error_num = error_message(argv, input_count, str, buff_tk);
-					free(str);
-					if (error_num == 1)
-					{
-						free(buff_tk);
-						buff_tk = NULL;
-						return (1);
-					}
-				}
+					helper_builtin_exit(buff_tk, argv, str, input_count, stat, error_num);
 			}
 		}
 		*stat = (temp << shifter) >> shifter;
