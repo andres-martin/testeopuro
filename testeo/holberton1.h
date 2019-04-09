@@ -30,7 +30,8 @@ typedef struct listint_s
 typedef struct builtin
 {
 	char *name;
-	int (*func)();
+	int (*func)(char **buff_tk, listint_t **env, char *buff,
+			char *argv, size_t input_count, int *stat);
 } builtin_t;
 void exec_command(char *argv, char **buff_tk, char *buff_tk1,
 		char *buff, int check_path, int *stat);
@@ -87,6 +88,4 @@ ssize_t _getline(char **p, size_t *n, FILE *s);
 void red(void);
 void yellow(void);
 void reset(void);
-/* beta testing */
-int bart(void);
 #endif

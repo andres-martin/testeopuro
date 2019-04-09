@@ -15,15 +15,16 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	int check_path = -1, stat = 0;
 	char *path = NULL, *buff = NULL, *buff_tk1 = NULL, **buff_tk = NULL;
 	char *pl_holder = "†Shell's Bells† ";
+
 	get_env(&env_cp, env);
 	while (1)
 	{
 		check_path = -1;
 		signal(SIGINT, signalhandler);
 		if (isatty(STDIN_FILENO))
-			red ();
+			red();
 			write(STDOUT_FILENO, pl_holder, _strlen(pl_holder));
-			reset ();
+			reset();
 		input_count++;
 		read = _getline(&buff, &br, stdin);
 		if (read == -1)
@@ -44,19 +45,15 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		if (buff_tk[0][0] == '.')
 		{
 			if (buff_tk[0][1] == '/' && !buff_tk[0][2])
-			{
-				stat = 126;
+			{	stat = 126;
 				error_message(*argv, input_count,
 						": Permission denied\n", buff_tk);
 				free(buff_tk);
-				continue;
-			}
+				continue; }
 			else if (!buff_tk[0][1])
-			{
-				stat = 0;
+			{	stat = 0;
 				free(buff_tk);
-				continue;
-			}
+				continue; }
 		}
 		if (buff_tk[0][0] == '/' || buff_tk[0][0] == '.')
 		{
@@ -64,8 +61,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 			if (check_path == -1)
 			{
 				stat = 127;
-				error_message(*argv, input_count,
-						": not found\n", buff_tk);
+				error_message(*argv, input_count, ": not found\n", buff_tk);
 				free(buff_tk);
 				continue;
 			}
