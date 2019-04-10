@@ -1,5 +1,15 @@
 #include "holberton.h"
-
+void aux_shell(int check_path, char *pl_holder)
+{
+	check_path = -1;
+	signal(SIGINT, signalhandler);
+	if (isatty(STDIN_FILENO))
+	{
+		red();
+		write(STDOUT_FILENO, pl_holder, _strlen(pl_holder));
+		reset();
+	}
+}
 /**
  * main - main shell function
  * @argc: number of parameters
@@ -19,12 +29,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	get_env(&env_cp, env);
 	while (1)
 	{
-		check_path = -1;
-		signal(SIGINT, signalhandler);
-		if (isatty(STDIN_FILENO))
-			red();
-			write(STDOUT_FILENO, pl_holder, _strlen(pl_holder));
-			reset();
+		aux_shell(check_path, pl_holder);
 		input_count++;
 		read = _getline(&buff, &br, stdin);
 		if (read == -1)
@@ -39,8 +44,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		buff_tk = create_arg_list(buff_tk, buff, " \t\n");
 		if (!buff_tk)
 			continue;
-		if (get_builtin(buff_tk)(buff_tk, &env_cp, buff, argv[0],
-					input_count, &stat))
+		if (get_builtin(buff_tk)(buff_tk, &env_cp, buff, argv[0], input_count, &stat))
 			continue;
 		if (buff_tk[0][0] == '.')
 		{
@@ -59,29 +63,23 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		{
 			check_path = access(buff_tk[0], F_OK);
 			if (check_path == -1)
-			{
-				stat = 127;
+			{	stat = 127;
 				error_message(*argv, input_count, ": not found\n", buff_tk);
 				free(buff_tk);
-				continue;
-			}
+				continue; }
 			if (access(buff_tk[0], X_OK) == -1)
-			{
-				stat = 126;
+			{	stat = 126;
 				error_message(*argv, input_count,
 						": Permission denied\n", buff_tk);
 				free(buff_tk);
-				continue;
-			}
+				continue; }
 		}
 		if (check_path == -1)
-		{
-			path = _getenv("PATH", &env_cp);
+		{	path = _getenv("PATH", &env_cp);
 			buff_tk1 = path_helper(path, buff_tk, argv[0], input_count, &stat);
 			if (buff_tk1 == NULL)
-				continue;
-		}
+				continue; }
 		exec_command(argv[0], buff_tk, buff_tk1, buff, check_path, &stat);
 	}
-	return (0);
+return (0);
 }
