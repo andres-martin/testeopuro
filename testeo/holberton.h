@@ -54,7 +54,8 @@ char *make_key_val(char *tempstr);
 int helper_builtin_cd(char **buff_tk, char *argv, char *str,
 	char *tmp_str, size_t input_count, int *stat);
 int builtin_cd(char **buff_tk, listint_t **env, char *buff,
-		char *argv, size_t input_count, int *stat);
+	char *argv, size_t input_count, int *stat);
+/* end */
 int change_pwd(listint_t **env_cp, char *a, char *add);
 int builtin_unsetenv(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);

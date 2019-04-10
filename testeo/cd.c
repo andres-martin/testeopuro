@@ -25,6 +25,36 @@ int helper_builtin_cd(char **buff_tk, char *argv, char *str,
 	*stat = 2;
 return (1);
 }
+/**
+ * aux_add_str_cd - helper function for biuldtin cd
+ * @add_str: pointer to add_str
+ * @pwd: pointer to pwd variable
+ * @temp: pointer to temp
+ * @env: environment variable
+ */
+void aux_add_str_cd(char *add_str, char *pwd, listint_t *temp, listint_t **env)
+{
+	add_str = _getenv("OLDPWD", &temp);
+	if (add_str == NULL)
+	{
+		add_str = getcwd(add_str, 0);
+		change_pwd(env, "OLDPWD", add_str);
+		write(STDOUT_FILENO, add_str, _strlen(add_str));
+		write(STDOUT_FILENO, "\n", 1);
+		free(add_str);
+	}
+	else if (chdir(add_str) == 0)
+	{
+		change_pwd(env, "OLDPWD", pwd);
+		add_str = NULL;
+		add_str = getcwd(add_str, 0);
+		change_pwd(env, "PWD", add_str);
+		write(STDOUT_FILENO, add_str, _strlen(add_str));
+		write(STDOUT_FILENO, "\n", 1);
+		free(add_str);
+	}
+}
+
 
 /**
  * builtin_cd - change current working directory
@@ -43,7 +73,6 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 	listint_t *temp = *env;
 	char *add_str = NULL, *pwd = NULL, *str = NULL, *tmp_str = NULL;
 	char home[5] = "$HOME";
-
 	(void) buff;
 
 	while (buff_tk[tokens])
@@ -57,8 +86,7 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 	}
 	/* for case cd */
 	if (tokens == 1 || (tokens >= 2 &&
-				(buff_tk[1][0] == '~' ||
-				 _strcmp(buff_tk[1], home) == 0)))
+				(buff_tk[1][0] == '~' || _strcmp(buff_tk[1], home) == 0)))
 	{
 		add_str = _getenv("HOME", &temp);
 		check_cd = chdir(add_str);
@@ -71,32 +99,9 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 	else if (tokens > 1 && buff_tk[1][0] == '-')
 	{
 		if (buff_tk[1][1] == '\0')
-		{
-			add_str = _getenv("OLDPWD", &temp);
-			if (add_str == NULL)
-			{
-				add_str = getcwd(add_str, 0);
-				change_pwd(env, "OLDPWD", add_str);
-				write(STDOUT_FILENO, add_str, _strlen(add_str));
-				write(STDOUT_FILENO, "\n", 1);
-				free(add_str);
-			}
-			else if (chdir(add_str) == 0)
-			{
-				change_pwd(env, "OLDPWD", pwd);
-				add_str = NULL;
-				add_str = getcwd(add_str, 0);
-				change_pwd(env, "PWD", add_str);
-				write(STDOUT_FILENO, add_str, _strlen(add_str));
-				write(STDOUT_FILENO, "\n", 1);
-				free(add_str);
-			}
-		}
-		/* HERE HELPER FUNCTION */
+			aux_add_str_cd(add_str, pwd, temp, env);
 		else if (buff_tk[1][1] != '\0')
-		{
 			helper_builtin_cd(buff_tk, argv, str, tmp_str, input_count, stat);
-		}
 	}
 	else if (tokens > 1)
 	{
@@ -107,7 +112,6 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 			change_pwd(env, "OLDPWD", pwd);
 			change_pwd(env, "PWD", add_str);
 			free(add_str);
-
 		}
 		else if (check_cd == -1)
 		{
@@ -123,5 +127,5 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 	if (free_pwd == 1)
 		free(pwd);
 	free(buff_tk);
-	return (1);
+return (1);
 }
