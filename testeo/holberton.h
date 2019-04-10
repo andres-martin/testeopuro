@@ -61,11 +61,17 @@ int builtin_notfound(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
 int builtin_env(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
+/* exit collection */
+int helper_builtin_exit(char **buff_tk,
+	char *argv, char *str, size_t input_count, int *stat, int err_num);
 int builtin_exit(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
 int _strcmp(char *s1, char *s2);
 char *_getenv(char *name, listint_t **env);
 char *_strcat(char *dest, char *src, char *str);
+/* path collection */
+char *aux_path(char *argv, char *path_cp, char *concat_path, char **path_tk,
+	char **buff_tk, size_t input_count, int *stat);
 char *path_helper(char *path, char **buff_tk, char *argv,
 		size_t input_count, int *stat);
 int _strlen(char *s);
