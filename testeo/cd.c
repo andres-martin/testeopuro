@@ -54,7 +54,42 @@ void aux_add_str_cd(char *add_str, char *pwd, listint_t *temp, listint_t **env)
 		free(add_str);
 	}
 }
-
+/**
+ * aux_check_cd - helper function for biuldtin cd
+ * @add_str: pointer to string
+ * @argv: arguments
+ * @str: pointer to string
+ * @pwd: current path
+ * @buff_tk: buffer token
+ * @env: environment variable
+ * @check_cd: variable to check cd
+ * @input_count: number of commands run so far
+ * @stat: exit status
+ * Return: return
+ */
+int aux_check_cd(char *add_str, char *argv, char *str, char *pwd,
+char **buff_tk, listint_t **env, int check_cd, size_t input_count, int *stat)
+{
+	check_cd = chdir(buff_tk[1]);
+	if (check_cd == 0)
+	{
+		add_str = getcwd(add_str, 0);
+		change_pwd(env, "OLDPWD", pwd);
+		change_pwd(env, "PWD", add_str);
+		free(add_str);
+	}
+	else if (check_cd == -1)
+	{
+		str = _strcat(": can't cd to ", buff_tk[1], "\n");
+		error_message(argv, input_count, str, buff_tk);
+		free(str);
+		*stat = 2;
+		free(buff_tk);
+		buff_tk = NULL;
+		return (1);
+	}
+return;
+}
 
 /**
  * builtin_cd - change current working directory
@@ -84,7 +119,6 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 		pwd = getcwd(pwd, 0);
 		change_pwd(env, "PWD", pwd);
 	}
-	/* for case cd */
 	if (tokens == 1 || (tokens >= 2 &&
 				(buff_tk[1][0] == '~' || _strcmp(buff_tk[1], home) == 0)))
 	{
@@ -104,26 +138,8 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 			helper_builtin_cd(buff_tk, argv, str, tmp_str, input_count, stat);
 	}
 	else if (tokens > 1)
-	{
-		check_cd = chdir(buff_tk[1]);
-		if (check_cd == 0)
-		{
-			add_str = getcwd(add_str, 0);
-			change_pwd(env, "OLDPWD", pwd);
-			change_pwd(env, "PWD", add_str);
-			free(add_str);
-		}
-		else if (check_cd == -1)
-		{
-			str = _strcat(": can't cd to ", buff_tk[1], "\n");
-			error_message(argv, input_count, str, buff_tk);
-			free(str);
-			*stat = 2;
-			free(buff_tk);
-			buff_tk = NULL;
-			return (1);
-		}
-	}
+		aux_check_cd(add_str, argv, str, pwd, buff_tk, env,
+			check_cd, input_count, stat);
 	if (free_pwd == 1)
 		free(pwd);
 	free(buff_tk);
