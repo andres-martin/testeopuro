@@ -53,6 +53,8 @@ char *make_key_val(char *tempstr);
 /* cd collection */
 int helper_builtin_cd(char **buff_tk, char *argv, char *str,
 	char *tmp_str, size_t input_count, int *stat);
+int aux_check_cd(char *add_str, char *argv, char *str, char *pwd,
+char **buff_tk, listint_t **env, int check_cd, size_t input_count, int *stat);
 int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 	char *argv, size_t input_count, int *stat);
 void aux_add_str_cd(char *add_str, char *pwd,
