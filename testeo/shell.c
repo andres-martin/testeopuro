@@ -12,6 +12,17 @@ void aux_shell(int check_path)
 		reset();
 	}
 }
+
+void rd_shell(size_t br, ssize_t read, char *buff, int stat, listint_t *env_cp)
+{
+	if (read == -1)
+	{
+		free(buff);
+		free_list(env_cp);
+		stat > 255 ? stat /= 256 : stat;
+		_exit(stat);
+	}
+}
 /**
  * main - main shell function
  * @argc: number of parameters
@@ -32,13 +43,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	{
 		aux_shell(check_path);
 		read = _getline(&buff, &br, stdin);
-		if (read == -1)
-		{
-			free(buff);
-			free_list(env_cp);
-			stat > 255 ? stat /= 256 : stat;
-			_exit(stat);
-		}
+		rd_shell(br, read, buff, stat, env_cp);
 		if (buff && buff[0] == '\n')
 			continue;
 		buff_tk = create_arg_list(buff_tk, buff, " \t\n");
