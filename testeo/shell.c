@@ -28,10 +28,9 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	char *path = NULL, *buff = NULL, *buff_tk1 = NULL, **buff_tk = NULL;
 
 	get_env(&env_cp, env);
-	while (1)
+	for (; 1; in_count++)
 	{
 		aux_shell(check_path);
-		in_count++;
 		read = _getline(&buff, &br, stdin);
 		if (read == -1)
 		{
