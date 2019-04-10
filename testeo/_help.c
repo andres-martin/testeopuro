@@ -22,6 +22,7 @@ void help_all(void)
 {
 	char *msg = "Shell's Bells\nThese shell commands are defined internally.\n";
 
+	green();
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "Type 'help' to see this list.\nType 'help name' to find ";
 	write(STDOUT_FILENO, msg, _strlen(msg));

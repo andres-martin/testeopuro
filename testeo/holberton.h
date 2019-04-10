@@ -103,6 +103,7 @@ void green(void);
 void yellow(void);
 void blue(void);
 void reset(void);
+void resetb(void);
 /* beta testing */
 int bart(void);
 /* help collection */
