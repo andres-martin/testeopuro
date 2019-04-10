@@ -1,5 +1,32 @@
 #include "holberton.h"
 /**
+ * helper_builtin_cd - helper function for biuldtin cd
+ * @buff_tk: tokenzied buffer
+ * @str: pointer to string
+ * @tmp_str: pointer to temp string
+ * @argv: program name
+ * @input_count: number of commands run so far
+ * @stat: exit status
+ * Return: always 1
+ */
+int helper_builtin_cd(char **buff_tk, char *argv, char *str,
+	char *tmp_str, size_t input_count, int *stat)
+{
+	tmp_str = malloc(sizeof(char) * 3);
+	tmp_str[0] = buff_tk[1][0];
+	tmp_str[1] = buff_tk[1][1];
+	tmp_str[2] = '\0';
+	str = _strcat(": Illegal option ", tmp_str, "\n");
+	error_message(argv, input_count, str, buff_tk);
+	free(tmp_str);
+	free(str);
+	free(buff_tk);
+	buff_tk = NULL;
+	*stat = 2;
+return (1);
+}
+
+/**
  * builtin_cd - change current working directory
  * @buff_tk: tokenzied buffer
  * @env: copy of environment values
@@ -65,20 +92,10 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 				free(add_str);
 			}
 		}
+		/* HERE HELPER FUNCTION */
 		else if (buff_tk[1][1] != '\0')
 		{
-			tmp_str = malloc(sizeof(char) * 3);
-			tmp_str[0] = buff_tk[1][0];
-			tmp_str[1] = buff_tk[1][1];
-			tmp_str[2] = '\0';
-			str = _strcat(": Illegal option ", tmp_str, "\n");
-			error_message(argv, input_count, str, buff_tk);
-			free(tmp_str);
-			free(str);
-			free(buff_tk);
-			buff_tk = NULL;
-			*stat = 2;
-			return (1);
+			helper_builtin_cd(buff_tk, argv, str, tmp_str, input_count, stat);
 		}
 	}
 	else if (tokens > 1)

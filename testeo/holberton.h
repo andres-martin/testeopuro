@@ -50,6 +50,9 @@ int delete_node_at_index(listint_t **head, unsigned int index);
 void get_env(listint_t **head, char **env);
 void free_list(listint_t *head);
 char *make_key_val(char *tempstr);
+/* cd collection */
+int helper_builtin_cd(char **buff_tk, char *argv, char *str,
+	char *tmp_str, size_t input_count, int *stat);
 int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
 int change_pwd(listint_t **env_cp, char *a, char *add);
