@@ -55,6 +55,8 @@ int helper_builtin_cd(char **buff_tk, char *argv, char *str,
 	char *tmp_str, size_t input_count, int *stat);
 int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 	char *argv, size_t input_count, int *stat);
+void aux_add_str_cd(char *add_str, char *pwd,
+	listint_t *temp, listint_t **env);
 /* end */
 int change_pwd(listint_t **env_cp, char *a, char *add);
 int builtin_unsetenv(char **buff_tk, listint_t **env, char *buff,
