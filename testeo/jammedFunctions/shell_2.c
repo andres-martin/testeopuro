@@ -23,14 +23,6 @@ void rd_shell(size_t br, ssize_t read, char *buff, int stat, listint_t *env_cp)
 		_exit(stat);
 	}
 }
-void stat_helper(int stat, char *s, char **argv, char **buff_tk,
-size_t in_count)
-{
-	stat = stat;
-	error_message(*argv, in_count, s, buff_tk);
-	free(buff_tk);
-}
-
 /**
  * main - main shell function
  * @argc: number of parameters
@@ -62,7 +54,9 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		if (buff_tk[0][0] == '.')
 		{
 			if (buff_tk[0][1] == '/' && !buff_tk[0][2])
-			{ stat_helper(126, ": Permission denied\n", argv, buff_tk, in_count);
+			{	stat = 126;
+				error_message(*argv, in_count, ": Permission denied\n", buff_tk);
+				free(buff_tk);
 				continue; }
 			else if (!buff_tk[0][1])
 			{	stat = 0;
@@ -72,10 +66,14 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		{
 			check_path = access(buff_tk[0], F_OK);
 			if (check_path == -1)
-			{ stat_helper(127, ": not found\n", argv, buff_tk, in_count);
+			{	stat = 127;
+				error_message(*argv, in_count, ": not found\n", buff_tk);
+				free(buff_tk);
 				continue; }
 			if (access(buff_tk[0], X_OK) == -1)
-			{ stat_helper(126, ": Permission denied\n", argv, buff_tk, in_count);
+			{	stat = 126;
+				error_message(*argv, in_count, ": Permission denied\n", buff_tk);
+				free(buff_tk);
 				continue; }	}
 		if (check_path == -1)
 		{	path = _getenv("PATH", &env_cp);
