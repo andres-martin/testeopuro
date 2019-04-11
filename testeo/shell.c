@@ -1,6 +1,7 @@
 #include "holberton.h"
-#define MAX_LEN 128
-
+/**
+ * aux_shell - shell prompt function
+ */
 void aux_shell(void)
 {
 	char *pl_holder = "†Shell's Bells† ";
@@ -13,7 +14,13 @@ void aux_shell(void)
 		reset();
 	}
 }
-
+/**
+ * rd_shell - aux read shell function
+ * @leer: variable that holds _getline
+ * @buff: buffer
+ * @stat: status variable
+ * @env_cp: environment copy
+ */
 void rd_shell(ssize_t leer, char *buff, int stat, listint_t *env_cp)
 {
 	if (leer == -1)
@@ -24,6 +31,14 @@ void rd_shell(ssize_t leer, char *buff, int stat, listint_t *env_cp)
 		_exit(stat);
 	}
 }
+/**
+ * stat_helper - aux stat shell function
+ * @s: string
+ * @buff_tk: buffer token
+ * @argv: argument vector
+ * @stat: status variable
+ * @in_count: input counter
+ */
 void stat_helper(int stat, char *s, char **argv, char **buff_tk,
 ssize_t in_count)
 {
@@ -31,7 +46,11 @@ ssize_t in_count)
 	error_message(*argv, in_count, s, buff_tk);
 	free(buff_tk);
 }
-
+/**
+ * aux_aux - aux function
+ * @buff_tk: buffer token
+ * @stat: status variable
+ */
 void aux_aux(int stat, char **buff_tk)
 {
 	stat = stat;
