@@ -27,7 +27,7 @@ return (0);
 }
 
 /**
- * builtin_exit - checks if argument is exit.
+ * s_exit - checks if argument is exit.
  * @buff_tk: pointer to string to check
  * @env: pointer to environment values
  * @buff: pointer to buffer
@@ -37,7 +37,7 @@ return (0);
  * Return: 0 if bad error message received in exit 1 otherwise
  *
  */
-int  builtin_exit(char **buff_tk, listint_t **env, char *buff,
+int s_exit(char **buff_tk, listint_t **env, char *buff,
 	char *argv, size_t input_count, int *stat)
 {
 	int i = 0, error_num;

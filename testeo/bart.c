@@ -1,4 +1,8 @@
 #include "holberton.h"
+/**
+ * bart - print bart
+ * Return: Always 1
+ */
 int bart(void)
 {
 	int txt_file, total, read_status;
@@ -26,5 +30,5 @@ int bart(void)
 	write(STDOUT_FILENO, buffer, read_status);
 	total += read_status;
 	close(txt_file);
-	return (1);
+return (1);
 }

@@ -1,4 +1,8 @@
 #include "holberton.h"
+/**
+ * welcome - prints welcome message
+ * Return: Always 1
+ */
 int welcome(void)
 {
 	int txt_file, total, read_status;

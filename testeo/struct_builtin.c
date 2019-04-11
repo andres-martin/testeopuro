@@ -13,15 +13,15 @@ int (*get_builtin(char **s))(char **buff_tk, listint_t
 	**env, char *buff, char *argv, size_t input_count, int *stat)
 {
 	builtin_t builtins[] = {
-		{"exit", builtin_exit},
-		{"env", builtin_env},
-		{"setenv", builtin_setenv},
-		{"unsetenv", builtin_unsetenv},
-		{"cd", builtin_cd},
+		{"exit", s_exit},
+		{"env", _env},
+		{"setenv", _setenv},
+		{"unsetenv", _unsetenv},
+		{"cd", _cd},
 		{"bart", bart},
 		{"help", _help},
 		{"welcome", welcome},
-		{NULL, builtin_notfound}
+		{NULL, _notfound}
 	};
 	int i = 0;
 

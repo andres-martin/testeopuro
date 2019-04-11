@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * builtin_notfound - dummy function when command is not a builtin
+ * _notfound - function core for whole shell
  * @buff_tk: pointer to pointer of commands entered
  * @env: pointer to pointer of env
  * @buff: buffer
@@ -9,7 +9,7 @@
  * @stat: exit status
  * Return: always 2
  */
-int builtin_notfound(char **buff_tk, listint_t **env, char *buff,
+int _notfound(char **buff_tk, listint_t **env, char *buff,
 	char *argv, size_t input_count, int *stat)
 {
 	(void) buff_tk;

@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * builtin_setenv - sets or updates environment variable
+ * _setenv - sets or updates environment variable
  * @buff_tk: tokenized buffer
  * @env: linked list of environment variable
  * @buff: input buffer
@@ -9,7 +9,7 @@
  * @stat: exit code
  * Return: 0 if successful 1 otherwise
  */
-int builtin_setenv(char **buff_tk, listint_t **env, char *buff,
+int _setenv(char **buff_tk, listint_t **env, char *buff,
 	char *argv, size_t input_count, int *stat)
 {
 	listint_t *temp = *env;
@@ -22,7 +22,6 @@ int builtin_setenv(char **buff_tk, listint_t **env, char *buff,
 		tokens++;
 	if (tokens < 3)
 	{
-		/* print error message and return (1) */
 		*stat = 0;
 		error_message(argv, input_count, ": Invalid Argument for setenv\n", buff_tk);
 	}

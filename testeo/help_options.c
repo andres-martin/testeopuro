@@ -9,6 +9,7 @@ void help_env(void)
 
 	blue();
 	write(STDOUT_FILENO, msg, _strlen(msg));
+	resetb();
 }
 /**
  * help_setenv - aux function of _help
@@ -24,6 +25,7 @@ void help_setenv(void)
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "\tUpon failure, prints a message to stderr.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
+	resetb();
 }
 /**
  * help_unsetenv - aux function of _help
@@ -39,6 +41,7 @@ void help_unsetenv(void)
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "message to stderr.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
+	resetb();
 }
 /**
  * help_cd - aux function of _help
@@ -62,6 +65,7 @@ void help_cd(void)
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "after a change of directory.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
+	resetb();
 }
 
 /**

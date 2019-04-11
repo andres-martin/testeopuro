@@ -91,7 +91,7 @@ return (0);
 }
 
 /**
- * builtin_cd - change current working directory
+ * _cd - change current working directory
  * @buff_tk: tokenzied buffer
  * @env: copy of environment values
  * @buff: input string
@@ -100,7 +100,7 @@ return (0);
  * @stat: exit status
  * Return: always 1
  */
-int builtin_cd(char **buff_tk, listint_t **env, char *buff,
+int _cd(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat)
 {
 	int check_cd, tokens = 0, free_pwd = 0;

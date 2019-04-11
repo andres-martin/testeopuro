@@ -62,24 +62,24 @@ int helper_builtin_cd(char **buff_tk, char *argv, char *str,
 	char *tmp_str, size_t input_count, int *stat);
 int aux_check_cd(char *add_str, char *argv, char *str, char *pwd,
 char **buff_tk, listint_t **env, int check_cd, size_t input_count, int *stat);
-int builtin_cd(char **buff_tk, listint_t **env, char *buff,
+int _cd(char **buff_tk, listint_t **env, char *buff,
 	char *argv, size_t input_count, int *stat);
 void aux_add_str_cd(char *add_str, char *pwd,
 	listint_t *temp, listint_t **env);
 /* end */
 int change_pwd(listint_t **env_cp, char *a, char *add);
-int builtin_unsetenv(char **buff_tk, listint_t **env, char *buff,
+int _unsetenv(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
-int builtin_setenv(char **buff_tk, listint_t **env, char *buff,
+int _setenv(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
-int builtin_notfound(char **buff_tk, listint_t **env, char *buff,
+int _notfound(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
-int builtin_env(char **buff_tk, listint_t **env, char *buff,
+int _env(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
 /* exit collection */
 int helper_builtin_exit(char **buff_tk,
 	char *argv, char *str, size_t input_count, int *stat, int err_num);
-int builtin_exit(char **buff_tk, listint_t **env, char *buff,
+int s_exit(char **buff_tk, listint_t **env, char *buff,
 		char *argv, size_t input_count, int *stat);
 int _strcmp(char *s1, char *s2);
 char *_getenv(char *name, listint_t **env);
