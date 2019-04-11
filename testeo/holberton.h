@@ -95,8 +95,8 @@ char *_strtok(char *str, const char *delim);
 /* new prototypes*/
 char *_strcpy(char *dest, const char *src);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-void aux_getline(char **p, size_t *n, char *buffer, size_t b);
-ssize_t _getline(char **p, size_t *n, FILE *s);
+void aux_getline(char **p, ssize_t *n, char *buffer, ssize_t b);
+ssize_t _getline(char **p, ssize_t *n, FILE *s);
 /* colors collection */
 void red(void);
 void green(void);
@@ -106,6 +106,7 @@ void reset(void);
 void resetb(void);
 /* beta testing */
 int bart(void);
+int welcome(void);
 /* help collection */
 void help_env(void);
 void help_setenv(void);

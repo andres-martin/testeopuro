@@ -20,6 +20,7 @@ int (*get_builtin(char **s))(char **buff_tk, listint_t
 		{"cd", builtin_cd},
 		{"bart", bart},
 		{"help", _help},
+		{"welcome", welcome},
 		{NULL, builtin_notfound}
 	};
 	int i = 0;

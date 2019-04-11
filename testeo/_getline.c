@@ -6,7 +6,7 @@
  * @buffer: buffer to be allocated
  * @b: size of character to be replaced
 */
-void aux_getline(char **p, size_t *n, char *buffer, size_t b)
+void aux_getline(char **p, ssize_t *n, char *buffer, ssize_t b)
 {
 	if (*p == NULL)
 	{
@@ -37,7 +37,7 @@ void aux_getline(char **p, size_t *n, char *buffer, size_t b)
  * @s: pointer to file to be read
  * Return: j.
 */
-ssize_t _getline(char **p, size_t *n, FILE *s)
+ssize_t _getline(char **p, ssize_t *n, FILE *s)
 {
 	static ssize_t i;
 	ssize_t j;

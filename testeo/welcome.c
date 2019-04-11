@@ -1,9 +1,9 @@
 #include "holberton.h"
-int bart(void)
+int welcome(void)
 {
 	int txt_file, total, read_status;
 	size_t letters = 5000;
-	char *filename = "bart.txt";
+	char *filename = "welcome.txt";
 	char buffer[1024];
 
 	if (filename == NULL)
@@ -26,5 +26,5 @@ int bart(void)
 	write(STDOUT_FILENO, buffer, read_status);
 	total += read_status;
 	close(txt_file);
-	return (1);
+return (1);
 }
