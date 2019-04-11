@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * get_env - makes a copy of the environment variablesk
+ * get_env - makes a copy of the environment variables
  * @head: pointer to pointer to head of list
  * @env: pointer to pointer of env to make copy of
  */

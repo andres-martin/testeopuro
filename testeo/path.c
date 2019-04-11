@@ -74,5 +74,5 @@ char *path_helper(char *path, char **buff_tk, char *argv,
 	*stat = 127;
 	error_message(argv, input_count, ": not found\n", buff_tk);
 	free(buff_tk);
-	return (NULL);
+return (NULL);
 }
