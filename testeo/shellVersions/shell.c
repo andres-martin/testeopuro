@@ -69,7 +69,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 				free(buff_tk);
 				continue; }	}
 		if (buff_tk[0][0] == '/' || buff_tk[0][0] == '.')
-		{	check_path = access(buff_tk[0], F_OK);
+		{
+			check_path = access(buff_tk[0], F_OK);
 			if (check_path == -1)
 			{ stat_helper(127, ": not found\n", argv, buff_tk, in_count);
 				continue; }
