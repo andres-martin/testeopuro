@@ -88,7 +88,7 @@ char **buff_tk, listint_t **env, int check_cd, size_t input_count, int *stat)
 		buff_tk = NULL;
 		return (1);
 	}
-return;
+return (0);
 }
 
 /**
