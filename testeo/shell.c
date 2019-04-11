@@ -1,9 +1,9 @@
 #include "holberton.h"
-void aux_shell(int check_path)
+#define MAX_LEN 128
+void aux_shell(void)
 {
 	char *pl_holder = "†Shell's Bells† ";
 
-	check_path = -1;
 	signal(SIGINT, signalhandler);
 	if (isatty(STDIN_FILENO))
 	{
@@ -13,7 +13,7 @@ void aux_shell(int check_path)
 	}
 }
 
-void rd_shell(size_t br, ssize_t read, char *buff, int stat, listint_t *env_cp)
+void rd_shell(ssize_t read, char *buff, int stat, listint_t *env_cp)
 {
 	if (read == -1)
 	{
@@ -31,6 +31,13 @@ size_t in_count)
 	free(buff_tk);
 }
 
+
+void display_splash_screen(FILE *file_ptr)
+{
+    char read_string[MAX_LEN];
+    while(fgets(read_string,sizeof(read_string),file_ptr) != NULL)
+        write(STDOUT_FILENO, read_string, _strlen(read_string));
+}
 /**
  * main - main shell function
  * @argc: number of parameters
@@ -45,13 +52,23 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	size_t in_count = 0, br = 0;
 	int check_path = -1, stat = 0;
 	char *path = NULL, *buff = NULL, *buff_tk1 = NULL, **buff_tk = NULL;
+	char *filename = "welcome.txt";
+    	FILE *fptr = NULL;
 
+	if((fptr = fopen(filename,"r")) == NULL)
+    	{
+        fprintf(stderr,"error opening %s\n",filename);
+        return 1;
+   	}
+    	display_splash_screen(fptr);
+    	fclose(fptr);
 	get_env(&env_cp, env);
 	for (; 1; in_count++)
 	{
-		aux_shell(check_path);
+		check_path = -1;
+		aux_shell();
 		read = _getline(&buff, &br, stdin);
-		rd_shell(br, read, buff, stat, env_cp);
+		rd_shell(read, buff, stat, env_cp);
 		if (buff && buff[0] == '\n')
 			continue;
 		buff_tk = create_arg_list(buff_tk, buff, " \t\n");

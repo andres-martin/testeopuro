@@ -67,10 +67,9 @@ void aux_add_str_cd(char *add_str, char *pwd, listint_t *temp, listint_t **env)
  * @stat: exit status
  * Return: return
  */
-int aux_check_cd(char *add_str, char *argv, char *str, char *pwd,
+int ax_chck(char *add_str, char *argv, char *str, char *pwd,
 char **buff_tk, listint_t **env, int check_cd, size_t input_count, int *stat)
 {
-	check_cd = chdir(buff_tk[1]);
 	if (check_cd == 0)
 	{
 		add_str = getcwd(add_str, 0);
@@ -138,8 +137,8 @@ int builtin_cd(char **buff_tk, listint_t **env, char *buff,
 			helper_builtin_cd(buff_tk, argv, str, tmp_str, input_count, stat);
 	}
 	else if (tokens > 1)
-		aux_check_cd(add_str, argv, str, pwd, buff_tk, env,
-			check_cd, input_count, stat);
+	{check_cd = chdir(buff_tk[1]);
+	ax_chck(add_str, argv, str, pwd, buff_tk, env, check_cd, input_count, stat); }
 	if (free_pwd == 1)
 		free(pwd);
 	free(buff_tk);
