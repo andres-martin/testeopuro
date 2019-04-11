@@ -45,6 +45,13 @@ void signalhandler(int sig);
  */
 int (*get_builtin(char **s))(char **buff_tk, listint_t **env,
 	char *buff, char *argv, size_t input_count, int *stat);
+/* shell collection */
+void aux_shell(void);
+void rd_shell(ssize_t leer, char *buff, int stat, listint_t *env_cp);
+void stat_helper(int stat, char *s, char **argv, char **buff_tk,
+ssize_t in_count);
+void aux_aux(int stat, char **buff_tk);
+
 listint_t *add_node_end(listint_t **head, char *a, char *b);
 int delete_node_at_index(listint_t **head, unsigned int index);
 void get_env(listint_t **head, char **env);
