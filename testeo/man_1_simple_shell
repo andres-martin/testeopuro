@@ -1,81 +1,91 @@
-npage for Simple Shell.
-.\" Contact Stephen Chu stephenchu530@gmail.com to correct errors or typos.
-.TH "JS Simple Shell" 1 "30 August 2018" "1.0" "JS Simple Shell man page"
+Simple Shell man page.
+
+.TH "Shell's Bells - Simple Shell Project" 1 "14 April 2019" "1.0" "Shell's Bells man page"
 
 .SH NAME
-hsh - Jian-Stephen Simple Shell
+hsh - Shell's Bells - Simple Shell
 
 .SH SYNOPSIS
-hsh (does not support arguments)
+hsh -the prototype of our main function is as follows: int main(int argc __attribute__((unused)), char **argv, char **env);
+            
+The header file is called holberton.h where all the prototypes, structures and libraries used in our shell are referenced.
 
 .SH DESCRIPTION
-Welcome to the Jian-Stephen Simple Shell project! This program is a simple shell that can be compiled and launched from the command line within any number of Linux versions. It contains the most basic features and functions found in the various shell programs.
+Welcome to the Robert-Martin Simple Shell Project this shell can be compiled and run from the command line, it includes basic features, as well as some advanced features found in most shell programs.
 
 .SH OVERVIEW
-The Jian-Stephen Simple Shell project is a major team project conducted by Jian Huang and Stephen Chu, students at Holberton School, for educational purposes. It consists of developing and makng our own clone of DASH - Debian Almquist shell found in several versions of Ubuntu Linux. Though cloning of DASH was the general guidance, having the same exact functionalities and features was not the goal. The goal for us was to learn and develop various team and individual skills regarding coding and git.
+The Robert-Martin Shell's Bells - Simple Shell project is a team project carried out by Robert Castellanos and Andres Martin, students at Holberton School Colombia, for educational purposes. Its main purpose is to develop our own clone of a shell version based on the ones found in Ubuntu Linux distributions. The main goal for us was to learn, develop, deploy and work collaboratively on our own Shell.
 
 .SH RETURN VALUE
-The shell returns the error code given by the last completed command followed by either ctrl-d or exit with no status code.
+The shell returns the error code given by the last run command, also either ctrl-d or exit, by default the main function returns 0.
 
 .SH SYNTAX
-JS$ <command> <flags or options> <argument 1> <argument 2> ...
+†Shell's Bells† <command> <flags>
+.SS
 OR NON-INTERACTIVE MODE:
-$ <command> | ./hsh
-.SS
-Interactive mode:
+$ echo "<command>" | ./hsh
+
+.SS Interactive mode:
+
 
 .SS
-EXAMPLE 1:
-JS$ /bin/ls
+EXAMPLES:
 .SS
-EXAMPLE 2:
-JS$ ls -l
+ls command:
+†Shell's Bells† ls -1
 .SS
-EXAMPLE 3:
-JS$ cat textfile
+pwd command:
+†Shell's Bells† pwd
 .SS
-Non-interactive mode:
-
+cd command:
+†Shell's Bells† cd ..
 .SS
-EXAMPLE 1:
-$ echo "ls -l" | ./hsh
+help command:
+†Shell's Bells† help <builtin command>
+.SS
+# comments
+†Shell's Bells† echo Hello # World
+Hello
 
 .SH BUILTIN COMMANDS
-.SS alias
-- create or list an alias
-
-.SS cd
-- change directory
-
-.SS env
-- list the current environment variables
+Our Shell supports a variety of builtin commands:
 
 .SS exit
-- exit the shell
+- exits the Shell
 
-.SS help
-- display help for a builtin command
-
-.SS history
-- display the command history for the current shell session
+.SS env
+- prints the environment variables.
 
 .SS setenv
-- sets and environment variable
+- sets an environment variable.
 
 .SS unsetenv
-- unsets an environment variable
+- unsets an environment variable.
+
+.SS cd
+- changes directory.
+
+.SS help
+- displays help for builtin commands.
+
+.SS Bonus
+
+.SS welcome
+- displays a welcome message
+.SS bart
+- shows Bart Simpson 
 
 .SH SEE ALSO
-DASH(1)
+BASH(1)
 
 .SH BUGS
 No known bugs
 
 .SH AUTHORS
-Jian Huang
-    jian.huang@holbertonschool.com
-    https://github.com/TrieToSucceed
+Robert Castellanos
+    770@holbertonschool.com
+    https://github.com/sebascastel
 
-Stephen Chu
-    stephen.chu@holbertonschool.com
-https://github.com/stephenchu530
+Andres Martin
+    786@holbertonschool.com
+    https://github.com/andres-martin
