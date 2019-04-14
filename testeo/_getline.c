@@ -31,7 +31,7 @@ void aux_getline(char **p, ssize_t *n, char *buffer, ssize_t b)
 	}
 }
 /**
- * _getline - aux function of getline
+ * _getline - function of getline
  * @p: double pointer
  * @n: size of characters
  * @s: pointer to file to be read

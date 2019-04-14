@@ -1,0 +1,8 @@
+CC=gcc
+
+CFLAGS= -Wall -Werror -Wextra -pedantic
+
+DIR= string/* builtin/* error/* shellhelpers/* memory/*
+
+all:
+$(CC) $(CFLAGS) *.c $(DIR) -o hsh
